@@ -1,25 +1,22 @@
 <?php
 
-require ('view/index.html.php');
-require ('controller/frontend_post.php');
+use Controller\FrontendPost;
 
-try { // On essaie de faire des choses
-    if (isset($_GET['action'])) {
+require ('controller/FrontendPost.php');
+
+$postController = new FrontendPost(); // instancier l'objet de la classe FrontendPost
+
+try { // On essaie de faire des choses 
+    if (isset($_GET['action'])) { 
         if ($_GET['action'] == 'listPosts') {
-            listPosts();
+            $postController->listPosts(); // on appelle la methode listPosts de la classe FrontendPost
         }
-        elseif ($_GET['action'] == 'post') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+        if ($_GET['action'] == 'post') {
+            $postController->post(); // on appelle la methode post de la classe FrontendPost
             }
-            else {
-                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
-                throw new Exception('Aucun identifiant de billet envoyé');
-            }
-        }
 }
 else {
-    listPosts();
+    $postController->listPosts();
     }
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
