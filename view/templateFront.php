@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="public/css/style.css">
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
   
   
@@ -44,12 +45,12 @@
                          <img src="assets/images/mbr-162x122.jpg" alt="Mobirise" title="" style="height: 3.8rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="https://mobirise.com">
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="index.php">
                         J.Forteroche.</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white display-4" href="https://mobirise.com"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+            <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white display-4" href="index.php"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
                         
                         Accueil</a></li><li class="nav-item dropdown">
                     <a class="nav-link link text-white dropdown-toggle display-4" href="https://mobirise.com" data-toggle="dropdown-submenu" aria-expanded="false"><span class="mbri-bulleted-list mbr-iconfont mbr-iconfont-btn"></span>
