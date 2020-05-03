@@ -14,7 +14,7 @@
                 <p class="mbr-text pb-3 mbr-fonts-style display-5">
                     Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
                 </p>
-                <div class="mbr-section-btn"><a class="btn btn-md btn-secondary-outline display-4" href="https://mobirise.com">Plus d'épisodes</a></div>
+               
             </div>
         </div>
     </div>
@@ -69,5 +69,5 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php
-require('view/templateFront.php')
+require ('view/templateFront.php');
 ?>

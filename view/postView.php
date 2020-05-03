@@ -80,5 +80,5 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php
-require('view/templateFront.php')
+require('view/templateFront.php');
 ?>
