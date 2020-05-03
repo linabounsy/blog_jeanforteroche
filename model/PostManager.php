@@ -7,6 +7,15 @@ require_once ('model/Database.php');
 class PostManager extends Database
 
 {
+   /* public function getAllPosts() // recupere TOUS les posts
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title FROM posts ORDER BY id DESC LIMIT 0, 20');
+        $allPosts = $req->fetchAll();
+        return $allPosts;
+
+    } */
+
     public function getPosts() // recupere les derniers posts
     {
         $db = $this->dbConnect();
@@ -24,6 +33,8 @@ class PostManager extends Database
         $post = $req->fetch();
         return $post;
     } 
+
+    
 
 
 }

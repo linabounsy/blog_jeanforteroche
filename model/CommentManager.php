@@ -19,7 +19,7 @@ class CommentManager extends Database
     public function postComment($postId, $author, $comment) // fonction ajouter un commenatire
     {
         $db = $this->dbConnect();
-        $newComment = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES (?, ?, ?, NOW()');
+        $newComment = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES (?, ?, ?, NOW())');
         $affectedLines = $newComment->execute(array($postId, $author, $comment));
         
         return $affectedLines;
