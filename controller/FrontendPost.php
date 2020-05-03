@@ -11,6 +11,16 @@ require_once ('model/CommentManager.php');
 class FrontendPost 
 
 {
+
+  /* public function listAllPosts()
+    {
+        $postManager = new PostManager(); // Création d'un objet
+        $allPosts = $postManager->getAllPosts(); // Appel d'une fonction de cet objet
+    
+    
+        require ('view/templateFront.php');
+    }*/
+
     public function listPosts()
     {
         $postManager = new PostManager(); // Création d'un objet
@@ -18,6 +28,7 @@ class FrontendPost
     
     
         require ('view/HomePageView.php');
+       
     }
 
     public function post()
@@ -35,5 +46,9 @@ class FrontendPost
         require ('view/postView.php');
    
     }
+
+    
+
+    
 
 }
