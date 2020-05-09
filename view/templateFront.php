@@ -65,11 +65,11 @@
 
                             Episodes</a>
 
-                            
-                        <div class="dropdown-menu">
-                            <?php 
 
-                                foreach ($posts as $post) {
+                        <div class="dropdown-menu">
+                            <?php
+
+                            foreach ($posts as $post) {
 
                             ?>
                                 <a class="text-white dropdown-item display-4" href="index.php?action=post&id=<?= $post['id'] ?>"><?= htmlspecialchars($post['title']) ?></a>
@@ -81,11 +81,27 @@
                             ?>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link text-white display-4" href="https://mobirise.com"><span class="mbri-letter mbr-iconfont mbr-iconfont-btn"></span>
+                    <?php
+                    if (isset($_SESSION['id']) && $_SESSION['id'] == 1) {
 
-                            Contact</a>
-                    </li>
+
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link link text-white display-4" href="index.php?action=connexion&connexionview.php"><span class="mbri-letter mbr-iconfont mbr-iconfont-btn"></span>
+
+                                <?= $_SESSION['login'] ?></a>
+                        </li>
+                    <?php
+                    } else { ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link link text-white display-4" href="index.php?action=connexion&connexionview.php"><span class="mbri-letter mbr-iconfont mbr-iconfont-btn"></span>
+
+                                Connexion</a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
 
             </div>
