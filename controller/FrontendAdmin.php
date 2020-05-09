@@ -30,7 +30,7 @@ class FrontendAdmin
 
                 session_start();
                 $_SESSION['id'] = $user['id'];
-                $_SESSION['login'] = $user['login'];
+                $_SESSION['login'] = $user['login']; // pousser la super globale dans la view template pour la connexion + afficher login user une fois connecté
                 header('Location: index.php');
             } else {
                 throw new Exception('Mauvais login ou mot de passe');
