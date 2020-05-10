@@ -16,4 +16,9 @@ class AdminManager extends Database
         return $user;
         
     }
+
+    public function redirectAdmin() 
+    {
+        
+    }
 }
