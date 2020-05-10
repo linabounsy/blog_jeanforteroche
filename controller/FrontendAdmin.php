@@ -4,9 +4,13 @@ namespace Controller;
 
 use Exception;
 use Model\AdminManager;
+use Model\PostManager;
+use Model\CommentManager;
 
-require_once('model/AdminManager.php');
 
+require_once ('model/AdminManager.php');
+require_once ('model/PostManager.php');
+require_once ('model/CommentManager.php');
 class FrontendAdmin
 {
     public function adminConnexion()
@@ -31,14 +35,24 @@ class FrontendAdmin
                 session_start();
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['login'] = $user['login']; // pousser la super globale dans la view template pour la connexion + afficher login user une fois connecté
-                header('Location: index.php');
+                header('Location: index.php?action=adminconnexion');
+                exit();
+                
             } else {
                 throw new Exception('Mauvais login ou mot de passe');
             }
+
         }
 
         require('view/connexionView.php');
     
+    }
+
+    public function adminView()
+    {
+      
+        require ('view/adminView.php');
+
     }
 
         
