@@ -32,6 +32,10 @@ try { // On essaie de faire des choses
         }
         if ($_GET['action'] == 'connexion') {
             $connexionController->adminConnexion();
+
+        }
+        if ($_GET['action'] == 'adminconnexion') {
+            $connexionController->adminView();
         }
         
  

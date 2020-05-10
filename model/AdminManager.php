@@ -17,8 +17,5 @@ class AdminManager extends Database
         
     }
 
-    public function redirectAdmin() 
-    {
-        
-    }
+
 }
