@@ -29,3 +29,15 @@ h2
     margin-top:10%;
     
 }
+
+#deconnexion
+{
+    text-align: center;
+}
+
+.containeradmin
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

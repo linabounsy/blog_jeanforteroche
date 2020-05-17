@@ -17,5 +17,5 @@ class AdminManager extends Database
         
     }
 
-
+  
 }

@@ -34,7 +34,20 @@ class PostManager extends Database
         return $post;
     } 
 
-    
+    public function getPostsAdmin() // recupere les posts vue admin
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content FROM posts ORDER BY id DESC LIMIT 0, 15');
+        $posts = $req->fetchAll();
+        return $posts;
 
+    }
 
+    public function deletePost($postId) // supprime un post 
+    {
+        $db = $this->dbConnect();
+        $delete = $db->prepare('DELETE FROM `posts` WHERE id = ?');
+        $delete->execute(array($postId));
+
+    }
 }

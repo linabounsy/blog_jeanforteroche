@@ -35,7 +35,13 @@ try { // On essaie de faire des choses
 
         }
         if ($_GET['action'] == 'adminconnexion') {
-            $connexionController->adminView();
+            $connexionController->listPostsAdminView();
+        }
+        if ($_GET['action'] == 'deconnexion') {
+            $connexionController->deconnexion();
+        }
+        if ($_GET['action'] == 'delete') {
+            $connexionController->deletePostAdmin();
         }
         
  

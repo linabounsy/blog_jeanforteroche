@@ -87,7 +87,7 @@
 
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link link text-white display-4" href="index.php?action=connexion&connexionview.php"><span class="mbri-letter mbr-iconfont mbr-iconfont-btn"></span>
+                            <a class="nav-link link text-white display-4" href="index.php?action=adminconnexion&adminview.php"><span class="mbri-letter mbr-iconfont mbr-iconfont-btn"></span>
 
                                 <?= $_SESSION['login'] ?></a>
                         </li>
