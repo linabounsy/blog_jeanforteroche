@@ -46,7 +46,7 @@
                                 <div><br></div>
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-7">
-                                <?= nl2br(htmlspecialchars($post['content'])) ?></p>
+                                <?= $post['content'] ?></p>
                         </div>
                         <div class="mbr-section-btn text-center"><a href="index.php?action=post&id=<?= $post['id'] ?>" class="btn btn-secondary-outline display-4">
                                 Lire Plus</a></div>

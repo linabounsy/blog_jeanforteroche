@@ -44,12 +44,14 @@ class FrontendAdmin
         require('view/connexionView.php');
     }
 
-    public function listPostsAdminView()
+    public function indexAdminView()
     {
-        // afficher les articles dans la view admin 
-        $adminManager = new AdminManager;
+        // afficher les articles et les commentaires dans la view admin 
+
         $postManager = new PostManager;
+        $commentManager = new CommentManager;
         $posts = $postManager->getPostsAdmin();
+        $comments = $commentManager->displayReported();
 
         require('view/adminView.php');
     }
@@ -61,9 +63,65 @@ class FrontendAdmin
         header('Location: index.php?action=adminconnexion');
     }
 
+    public function deleteCommentAdmin()
+    {
+        $commentManager = new CommentManager;
+        $deleteComment = $commentManager->deleteComment($_GET['id']);
+        header('Location: index.php?action=adminconnexion');
+    }
+
     public function deconnexion()
     {
         session_destroy();
         header('Location: index.php');
+    }
+
+    public function addPost($title, $content)
+    {
+        if (!empty($_POST['title']) && !empty($_POST['content'])) {
+            $postManager = new PostManager;
+            $affectedLines = $postManager->addPost($title, $content);
+        } else {
+            throw new Exception('Tous les champs ne sont pas remplis');
+        }
+        if ($affectedLines === false) {
+            throw new Exception('Impossible d\'ajouter l\'article');
+        } else {
+            header('Location: index.php?action=adminconnexion');
+        }
+    }
+
+    public function addNewPost() // renvoie vers la page de redaction de l'article
+    {
+        require('view/newPostView.php');
+    }
+
+    public function editPost($postId, $title, $content)
+    {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+            if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                $postManager = new PostManager;
+                $postManager->modifyPost($postId, $title, $content);
+            } else {
+                throw new Exception('Tous les champs ne sont pas remplis !');
+                
+            }
+        }
+        header('Location: index.php?action=adminconnexion');
+    }
+
+
+    public function modifyPost()
+    {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+        $postManager = new PostManager;
+        $post = $postManager->getPost($_GET['id']);
+        }
+        else {
+            // Autre exception
+            throw new Exception('aucun identifiant d\'article envoyé');
+        }
+        require('view/editPostView.php');
     }
 }

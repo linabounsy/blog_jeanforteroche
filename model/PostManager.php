@@ -46,8 +46,27 @@ class PostManager extends Database
     public function deletePost($postId) // supprime un post 
     {
         $db = $this->dbConnect();
-        $delete = $db->prepare('DELETE FROM `posts` WHERE id = ?');
+        $delete = $db->prepare('DELETE FROM posts WHERE id = ?');
         $delete->execute(array($postId));
 
     }
+
+    public function addPost($title, $content)
+    {
+        $db = $this->dbconnect();
+        $newPost = $db->prepare('INSERT INTO posts (title, content, creation_date) VALUES (?, ?, NOW())');
+        $affectedLines = $newPost->execute(array($title, $content));
+
+        return $affectedLines;
+    }
+
+    public function modifyPost($postId, $title, $content)
+
+    {
+        $db = $this->dbconnect();
+        $editPost = $db->prepare("UPDATE posts SET title = :title, content = :content WHERE id = :postId");
+        $editPost->execute(array('postId' =>$postId, 'title'=>$title, 'content'=>$content));
+    }
+  
+
 }

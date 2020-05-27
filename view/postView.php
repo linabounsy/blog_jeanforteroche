@@ -31,7 +31,7 @@
                 <h2 class="align-center pb-3 mbr-fonts-style display-2">
 
                 </h2>
-                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-7"><?= nl2br(htmlspecialchars($post['content'])) ?></h3>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-7"><?= $post['content'] ?></h3>
 
             </div>
         </div>
@@ -52,7 +52,9 @@
                 <div><br></div>
 
                 <p>
-                    <?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                    <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+                    <a href="index.php?action=reportcomment&id=<?= $comment['id'] ?>"><input type="button" value="signaler" onclick="return window.confirm('Votre signalement a bien été pris en compte')"></a>
+                </p>
 
             </div>
         <?php } ?>
@@ -69,7 +71,9 @@
             </div>
             <div>
                 <input type="submit">
+                
             </div>
+
         
         </form>
     </div>

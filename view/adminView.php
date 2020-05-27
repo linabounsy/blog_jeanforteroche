@@ -19,42 +19,67 @@
     </div>
 </section>
 
-<input type="button" value ="ajouter un article">
+<a href="index.php?action=addnewpost"><input type="button" value="ajouter un article"></a>
+
 <div class="containeradmin">
-   
-    
-        <?php
 
-        foreach ($posts as $post) {
-        ?>
 
-            <div class="card p-3 col-12 col-md-6 col-lg-4">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                        <img src="assets/images/mbr-676x380.jpg" alt="Mobirise" title="">
-                    </div>
-                    <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style display-7"><?= htmlspecialchars($post['title']) ?>
-                            <div><br></div>
-                        </h4>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                            <?= nl2br(htmlspecialchars($post['content'])) ?></p>
-                    </div>
-                    <a href="index.php?action=post&id=<?= $post['id'] ?>"><input type="button" value="voir l'article"></a>
-                    <input type="button" value="modifier l'article">
-                    <a href="index.php?action=delete&id=<?= $post['id'] ?>" onclick="return window.confirm('Etes vous sûr de vouloir supprimer cet article ?')"><input type="button" value="supprimer l'article"></a>
+    <?php
+
+    foreach ($posts as $post) {
+    ?>
+
+        <div class="card p-3 col-12 col-md-6 col-lg-4">
+            <div class="card-wrapper">
+                <div class="card-img">
+                    <img src="assets/images/mbr-676x380.jpg" alt="Mobirise" title="">
                 </div>
+                <div class="card-box">
+                    <h4 class="card-title mbr-fonts-style display-7"><?= htmlspecialchars($post['title']) ?>
+                        <div><br></div>
+                    </h4>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        <?= $post['content'] ?></p>
+                </div>
+                <a href="index.php?action=post&id=<?= $post['id'] ?>"><input type="button" value="voir l'article"></a>
+                <a href="index.php?action=modifypost&id=<?= $post['id'] ?>"><input type="button" value="modifier l'article"></a>
+                <a href="index.php?action=delete&id=<?= $post['id'] ?>" onclick="return window.confirm('Etes vous sûr de vouloir supprimer cet article ?')"><input type="button" value="supprimer l'article"></a>
             </div>
+        </div>
 
-           
 
 
-        <?php
-        }
-        ?>
-       
-   
+
+    <?php
+    }
+    ?>
 </div>
+
+<div id="reportcomments">
+    <h3>Commentaires signalés</h3>
+
+    <?php
+    foreach ($comments as $comment) { // car on a appelé displayReported dans $comments au niveau du controller 
+
+    ?>
+
+      <div class="card p-3 col-12 col-md-6 col-lg-4">
+            <div class="card-wrapper">
+             
+                <div class="card-box">
+                    <p>Auteur : <?= htmlspecialchars($comment['author']) ?><br />
+                    Commentaire : <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+                    <a href="index.php?action=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')"><input type="button" value="supprimer ce commentaire"></a>
+                </div>
+        
+            </div>
+        </div>
+
+    <?php
+    }
+    ?>
+</div>
+
 <div id="deconnexion">
     <a href="index.php?action=deconnexion"><input type="submit" value="deconnexion"></a>
 </div>

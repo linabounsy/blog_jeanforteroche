@@ -4,9 +4,11 @@ namespace Controller;
 
 use Exception;
 use Model\CommentManager;
+use Model\PostManager;
 
 
 require_once ('model/CommentManager.php');
+require_once ('model/PostManager.php');
 
 class FrontendComment
 
@@ -31,6 +33,22 @@ class FrontendComment
         }
         require ('view/postView.php');
     }
+
+    public function reportComment($commentId)
+    {
+        if (isset($_GET['id']) && $_GET['id']> 0) {
+            $commentId = $_GET['id'];
+            $commentManager = new CommentManager;
+            $postId = $commentManager->getComment($commentId); // recupère le tableau avec le commentaire en question
+            $post = $postId['post_id']; // recupère l'id du post 
+            $commentManager->reportComment($commentId);
+         
+            
+        }
+        header('Location: index.php?action=post&id=' .$post);
+    
+    }
+
 }
       
 

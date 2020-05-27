@@ -108,7 +108,7 @@
         </nav>
     </section>
 
-    <?= $content ?>
+    <div id="content"><?= $content ?></div>
 
 
     <section class="cid-qTkAaeaxX5" id="footer1-2">

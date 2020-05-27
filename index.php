@@ -35,7 +35,7 @@ try { // On essaie de faire des choses
 
         }
         if ($_GET['action'] == 'adminconnexion') {
-            $connexionController->listPostsAdminView();
+            $connexionController->indexAdminView();
         }
         if ($_GET['action'] == 'deconnexion') {
             $connexionController->deconnexion();
@@ -43,8 +43,25 @@ try { // On essaie de faire des choses
         if ($_GET['action'] == 'delete') {
             $connexionController->deletePostAdmin();
         }
-        
- 
+        if ($_GET['action'] == 'reportcomment') {
+            $commentController->reportComment($_GET['id']);
+        }
+        if ($_GET['action'] == 'delete') {
+            $connexionController->deleteCommentAdmin();
+        }
+        if ($_GET['action'] == 'addnewpost') {
+            $connexionController->addNewPost();
+        }
+        if ($_GET['action'] == 'addpost') {
+            $connexionController->addPost($_POST['title'], $_POST['content']);
+        }
+        if ($_GET['action'] == 'modifypost') {
+            $connexionController->modifyPost();
+        }
+        if ($_GET['action'] == 'editpost') {
+            $connexionController->editPost($_GET['id'], $_POST['title'], $_POST['content']);
+        }
+
 
 } else {
     $postController->listPosts();

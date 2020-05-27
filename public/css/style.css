@@ -41,3 +41,8 @@ h2
     flex-wrap: wrap;
     justify-content: center;
 }
+
+#content
+{
+    margin-top: 4%;
+}
