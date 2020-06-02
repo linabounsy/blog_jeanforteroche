@@ -1,70 +1,82 @@
 <?php ob_start(); ?>
 
-<section class="engine"><a href="https://mobirise.info/w">free html5 templates</a></section>
-<section class="cid-qTkA127IK8 mbr-fullscreen mbr-parallax-background" id="header2-1">
 
 
+<!--Main Navigation-->
 
-    <div class="container align-center">
-        <div class="row justify-content-md-center">
-            <div class="mbr-white col-md-10">
-                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
-                    Billet simple pour l'Alaska</h1>
+<!--Main layout-->
+<main class="mt-5 pt-5">
+<div class="container">
 
-                <p class="mbr-text pb-3 mbr-fonts-style display-5">
-                    Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-                </p>
-               
-            </div>
+  <!--Section: Jumbotron-->
+  <section class="card wow fadeIn" style="background-image: url(assets/images/mbr-1920x1280.jpg);">
+
+    <!-- Content -->
+    <div class="card-body text-white text-center py-5 px-5 my-5">
+
+      <h1 class="mb-4">
+        <strong>Billet simple pour l'Alaska</strong>
+      </h1>
+      <p>
+        <strong>Lorem ipsum dolor sit amet, eros pulvinar mi massa. </strong>
+      </p>
+      <p class="mb-4">
+        <strong>Lorem ipsum dolor sit amet, eros pulvinar mi massa. Placerat fermentum, leo dolor qui faucibus wisi, curabitur vitae. Pellentesque nec cras ac at ultricies, nam sed nunc neque ligula ligula amet, viverra enim quis praesent, sed natoque quam diam, scelerisque orci aliquam volutpat molestie ac bibendum. Nunc nec, deserunt nullam sollicitudin at ligula</strong>
+      </p>
+
+    </div>
+    <!-- Content -->
+  </section>
+  <!--Section: Jumbotron-->
+
+  <hr class="my-5">
+
+  <!--Section: Cards-->
+  <section class="text-center">
+
+    <!--Grid row-->
+    <div class="row mb-4 wow fadeIn">
+
+      <?php foreach ($posts as $post) { ?>
+ 
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 mb-4">
+      
+        <!--Card-->
+        <div class="card">
+
+          <!--Card image-->
+          <div class="view overlay">
+            <img src="assets/images/mbr-676x380.jpg" class="card-img-top"
+              alt="">
+            <a href="#" target="_blank">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <!--Card content-->
+          <div class="card-body">
+            <!--Title-->
+            <h4 class="card-title"><?= htmlspecialchars($post['title']) ?></h4>
+            <!--Text-->
+            <p class="card-text"><?= $post['content_cut'] ?></p>
+            <a href="index.php?action=post&id=<?= $post['id'] ?>" target="_blank"
+              class="btn btn-primary btn-md">Lire Plus
+              <i class="fas fa-play ml-2"></i>
+            </a>
+          </div>
+
         </div>
+        <!--/.Card-->
     </div>
-    <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
-        <a href="#next">
-            <i class="mbri-down mbr-iconfont"></i>
-        </a>
-    </div>
-</section>
+    <?php 
+      }
+      ?>
+      </div>
+      <!--Grid column-->
 
-<section class="features3 cid-rXt1IF1jbg" id="features3-e">
-
-
-    <div class="container">
-        <div class="media-container-row">
-            <?php
-
-
-            foreach ($posts as $post) {
-            ?>
-
-                <div class="card p-3 col-12 col-md-6 col-lg-4">
-                    <div class="card-wrapper">
-                        <div class="card-img">
-                            <img src="assets/images/mbr-676x380.jpg" alt="Mobirise" title="">
-                        </div>
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style display-7"><?= htmlspecialchars($post['title']) ?>
-                                <div><br></div>
-                            </h4>
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                <?= $post['content'] ?></p>
-                        </div>
-                        <div class="mbr-section-btn text-center"><a href="index.php?action=post&id=<?= $post['id'] ?>" class="btn btn-secondary-outline display-4">
-                                Lire Plus</a></div>
-                    </div>
-                </div>
-
-
-
-
-            <?php
-            }
-            ?>
-        </div>
-    </div>
-
-
-</section>
-
+</div>
+    </section>
 
 <?php $content = ob_get_clean(); ?>
 

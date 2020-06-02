@@ -18,6 +18,9 @@ class FrontendAdmin
 
 
         $adminManager = new AdminManager;
+        $postManager = new PostManager;
+        $allPosts = $postManager->getAllPosts();
+
         if (isset($_POST['login']) && ($_POST['password'])) {
             $login = $_POST["login"];
             $password = $_POST["password"];
@@ -39,8 +42,8 @@ class FrontendAdmin
             } else {
                 throw new Exception('Mauvais login ou mot de passe');
             }
-        }
 
+        }
         require('view/connexionView.php');
     }
 
@@ -52,7 +55,8 @@ class FrontendAdmin
         $commentManager = new CommentManager;
         $posts = $postManager->getPostsAdmin();
         $comments = $commentManager->displayReported();
-
+        $allPosts = $postManager->getAllPosts();
+        
         require('view/adminView.php');
     }
 

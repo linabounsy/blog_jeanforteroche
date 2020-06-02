@@ -7,19 +7,19 @@ require_once ('model/Database.php');
 class PostManager extends Database
 
 {
-   /* public function getAllPosts() // recupere TOUS les posts
+    public function getAllPosts() // recupere TOUS les posts
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title FROM posts ORDER BY id DESC LIMIT 0, 20');
+        $req = $db->query('SELECT id, title, content FROM posts ORDER BY id DESC');;
         $allPosts = $req->fetchAll();
         return $allPosts;
 
-    } */
+    } 
 
     public function getPosts() // recupere les derniers posts
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content FROM posts ORDER BY id DESC LIMIT 0, 3');
+        $req = $db->query('SELECT id, title, IF(CHAR_LENGTH(content) > 100, CONCAT(LEFT(content,100), "..."), content) AS content_cut FROM posts ORDER BY id DESC LIMIT 0, 3');
         $posts = $req->fetchAll();
         return $posts;
 
@@ -37,7 +37,7 @@ class PostManager extends Database
     public function getPostsAdmin() // recupere les posts vue admin
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content FROM posts ORDER BY id DESC LIMIT 0, 15');
+        $req = $db->query('SELECT id, title, IF(CHAR_LENGTH(content) > 100, CONCAT(LEFT(content,100), "..."), content) AS content_cut FROM posts ORDER BY id DESC');
         $posts = $req->fetchAll();
         return $posts;
 

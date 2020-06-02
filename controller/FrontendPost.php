@@ -12,20 +12,12 @@ class FrontendPost
 
 {
 
-  /* public function listAllPosts()
-    {
-        $postManager = new PostManager(); // Création d'un objet
-        $allPosts = $postManager->getAllPosts(); // Appel d'une fonction de cet objet
-    
-    
-        require ('view/templateFront.php');
-    }*/
 
     public function listPosts()
     {
         $postManager = new PostManager(); // Création d'un objet
         $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
-    
+        $allPosts = $postManager->getAllPosts();
     
         require ('view/HomePageView.php');
        
@@ -38,6 +30,7 @@ class FrontendPost
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $post = $postManager->getPost($_GET['id']);
             $comments = $commentManager->getComments($_GET['id']);
+            $allPosts = $postManager->getAllPosts();
         }
         else {
             throw new \Exception('Aucun identifiant de billet envoyé');
@@ -46,9 +39,6 @@ class FrontendPost
         require ('view/postView.php');
    
     }
-
-    
-
     
 
 }

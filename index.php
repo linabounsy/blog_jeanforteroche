@@ -18,9 +18,6 @@ $connexionController = new FrontendAdmin();
 
 try { // On essaie de faire des choses 
     if (isset($_GET['action'])) {
-        /*if ($_GET['action'] == 'listAllPosts') {
-            $postController->listAllPosts(); // on appelle la methode listPosts de la classe FrontendPost
-        }*/
         if ($_GET['action'] == 'listPosts') {
             $postController->listPosts(); // on appelle la methode listPosts de la classe FrontendPost
         }
@@ -32,7 +29,6 @@ try { // On essaie de faire des choses
         }
         if ($_GET['action'] == 'connexion') {
             $connexionController->adminConnexion();
-
         }
         if ($_GET['action'] == 'adminconnexion') {
             $connexionController->indexAdminView();

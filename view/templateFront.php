@@ -1,78 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <!-- Site made with Mobirise Website Builder v4.12.3, https://mobirise.com -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="generator" content="Mobirise v4.12.3, mobirise.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="assets/images/mbr-162x122.jpg" type="image/x-icon">
-    <meta name="description" content="">
-
-
-    <title>accueil</title>
-    <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="assets/socicon/css/styles.css">
-    <link rel="stylesheet" href="assets/tether/tether.min.css">
-    <link rel="stylesheet" href="assets/dropdown/css/style.css">
-    <link rel="stylesheet" href="assets/theme/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Accueil</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="assets/images/mbr-162x122.jpg" alt="accueil">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="public/css/style.css">
-    <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
-    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-
-
 </head>
 
 <body>
-    <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0">
+
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <div class="container">
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="index.php">
+                <img src="assets/images/mbr-162x122.jpg" height="30" alt="logo_accueil">
+                <strong class="black-text">J.Forteroche</strong>
+            </a>
+ 
+      
 
 
+    <!-- Collapse -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="menu-logo">
-                <div class="navbar-brand">
-                    <span class="navbar-logo">
-                        <a href="index.php">
-                            <img src="assets/images/mbr-162x122.jpg" alt="Mobirise" title="" style="height: 3.8rem;">
-                        </a>
-                    </span>
-                    <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="index.php">
-                            J.Forteroche.</a></span>
-                </div>
-            </div>
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item"><a class="nav-link link text-white display-4" href="index.php"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
-
-                            Accueil</a></li>
-                    <li class="nav-item dropdown">
-
-
-                        <a class="nav-link link text-white dropdown-toggle display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false"><span class="mbri-bulleted-list mbr-iconfont mbr-iconfont-btn"></span>
-
+      <!-- Left -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="index.php">Accueil
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-black" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Episodes</a>
-
-
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                           
                             <?php
 
-                            foreach ($posts as $post) {
+                            foreach ($allPosts as $allPost) {
 
                             ?>
-                                <a class="text-white dropdown-item display-4" href="index.php?action=post&id=<?= $post['id'] ?>"><?= htmlspecialchars($post['title']) ?></a>
+                                <a class="text-black dropdown-item display-4" href="index.php?action=post&id=<?= $allPost['id'] ?>"><?= htmlspecialchars($allPost['title']) ?></a>
 
 
 
@@ -86,123 +74,75 @@
 
 
                     ?>
-                        <li class="nav-item">
-                            <a class="nav-link link text-white display-4" href="index.php?action=adminconnexion&adminview.php"><span class="mbri-letter mbr-iconfont mbr-iconfont-btn"></span>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="index.php?action=adminconnexion&adminview.php"><?= $_SESSION['login'] ?></a>
+                   
+                    </li>
 
-                                <?= $_SESSION['login'] ?></a>
-                        </li>
                     <?php
                     } else { ?>
 
                         <li class="nav-item">
-                            <a class="nav-link link text-white display-4" href="index.php?action=connexion&connexionview.php"><span class="mbri-letter mbr-iconfont mbr-iconfont-btn"></span>
-
-                                Connexion</a>
-                        </li>
+                        <a class="nav-link text-black" href="index.php?action=connexion&connexionview.php">Connexion</a>
+                    </li>
                     <?php
                     }
                     ?>
-                </ul>
+      
+      </ul>
 
-            </div>
-        </nav>
-    </section>
+      <!-- Right -->
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item">
+          <a href="#" class="nav-link waves-effect" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link waves-effect" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+      
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+<!-- Navbar -->
+
 
     <div id="content"><?= $content ?></div>
 
 
-    <section class="cid-qTkAaeaxX5" id="footer1-2">
+    
 
 
-        <div class="container">
-            <div class="media-container-row content text-white">
-                <div class="col-12 col-md-3">
-                    <div class="media-wrap">
-                        <a href="https://mobirise.com/">
-                            <img src="assets/images/mbr-256x192.jpg" alt="Mobirise" title="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                    <h5 class="pb-3">Mentions légales</h5>
-                    <p class="mbr-text"></p>
-                </div>
-                <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                    <h5 class="pb-3">
-                        A propos de moi</h5>
-                    <p class="mbr-text">je suis blablabla</p>
-                </div>
-                <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                    <h5 class="pb-3"></h5>
-                    <p class="mbr-text"></p>
-                </div>
-            </div>
-            <div class="footer-lower">
-                <div class="media-container-row">
-                    <div class="col-sm-12">
-                        <hr>
-                    </div>
-                </div>
-                <div class="media-container-row mbr-white">
-                    <div class="col-sm-6 copyright">
-                        <p class="mbr-text mbr-fonts-style display-7">
-                            © Copyright Jean Forteroche - Tous droits réservés</p>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="social-list align-right">
-                            <div class="soc-item">
-                                <a href="https://twitter.com/mobirise" target="_blank">
-                                    <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
-                                </a>
-                            </div>
-                            <div class="soc-item">
-                                <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
-                                    <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                                </a>
-                            </div>
-                            <div class="soc-item">
-                                <a href="https://www.youtube.com/c/mobirise" target="_blank">
-                                    <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
-                                </a>
-                            </div>
-                            <div class="soc-item">
-                                <a href="https://instagram.com/mobirise" target="_blank">
-                                    <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
-                                </a>
-                            </div>
-                            <div class="soc-item">
-                                <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
-                                    <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
-                                </a>
-                            </div>
-                            <div class="soc-item">
-                                <a href="https://www.behance.net/Mobirise" target="_blank">
-                                    <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--Copyright-->
+<footer>
+<div class="footer-copyright py-3">
+  © 2020 Copyright:
+  <a href="#" target="_blank" class="black-text"> Jean Forteroche </a>
+</div>
+<!--/.Copyright-->
 
+</footer>
+<!--/.Footer-->
+    <!-- End your project here-->
 
-    <script src="assets/web/assets/jquery/jquery.min.js"></script>
-    <script src="assets/popper/popper.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/tether/tether.min.js"></script>
-    <script src="assets/dropdown/js/nav-dropdown.js"></script>
-    <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-    <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-    <script src="assets/parallax/jarallax.min.js"></script>
-    <script src="assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="assets/theme/js/script.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript"></script>
 
-
-</body>
-
-</html>
 </body>
 
 </html>

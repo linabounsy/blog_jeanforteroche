@@ -1,19 +1,19 @@
 <?php ob_start(); ?>
 
-
+<main class="mt-5 pt-5">
 
 <section id="connexion">
 
     <div id="container">
 
-        <form action="index.php?action=connexion" method="post">
-            <h2>Connexion</h2>
-            <label for="login">Login</label><br />
-            <input type="text" placeholder="entrez votre login" name="login" required><br />
-            <label for="password">Mot de passe</label><br />
-            <input type="password" placeholder="entrez votre mot de passe" name="password" required>
+        <form class="text-center border border-light p-5" action="index.php?action=connexion" method="post">
+        <p class="h4 mb-4">Se connecter</p>
+      
+            <input type="text" class="form-control mb-4" placeholder="Login" name="login" required>
+            <input type="password" class="form-control mb-4" placeholder="Mot de passe" name="password" required>
             <br /><br />
-            <input type="submit">
+
+            <input class="btn btn-info btn-block my-4" type="submit" value="se connecter">
             <br /><br />
             
         </form>

@@ -1,48 +1,23 @@
-#comments
-{
-    display: flex;
-    justify-content: center;
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
 }
 
-#allcomment
-{
-    border-width: 1px;
-    border-style: solid;
-    margin-bottom: 20px;
-    width: 550px;
 
-}
-.comment
-{
-    background-color: white;
- 
-}
 
-h2
+
+footer
 {
     text-align: center;
+    color: black;
 }
 
-#container{
-    width:400px;
-    margin:0 auto;
-    margin-top:10%;
-    
-}
-
-#deconnexion
+.form-control
 {
+    width: 50%;
+    display: block;
     text-align: center;
+    margin-left: 25%;
+
 }
 
-.containeradmin
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-#content
-{
-    margin-top: 4%;
-}
