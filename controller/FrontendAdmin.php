@@ -89,11 +89,11 @@ class FrontendAdmin
         header('Location: index.php');
     }
 
-    public function addPost($title, $content)
+    public function addPost($title, $content, $img)
     {
-        if (!empty($_POST['title']) && !empty($_POST['content'])) {
+        if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['img'])) {
             $postManager = new PostManager;
-            $affectedLines = $postManager->addPost($title, $content);
+            $affectedLines = $postManager->addPost($title, $content, $img);
         } else {
             throw new Exception('Tous les champs ne sont pas remplis');
         }
@@ -102,6 +102,17 @@ class FrontendAdmin
         } else {
             header('Location: index.php?action=adminconnexion');
         }
+        if (!empty($_FILES)) {
+            $file_name = $_FILES['fichier'] ['name']; // on veut le nom du fichier
+            $file_tmp_name = $_FILES['fichier'] ['tmp_name']; // on veut avoir le type de fichier
+            $file_dest = 'files/' .$file_name;
+        }
+        
+       if(move_uploaded_file($file_tmp_name, $file_dest)) { // prendre le fichier qui est dans le dossier temporaire et l'envoyer vers le dossier files
+        
+       } else {
+           echo 'une erreur est survenue';
+       }
     }
 
     public function addNewPost() // renvoie vers la page de redaction de l'article

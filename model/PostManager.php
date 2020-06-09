@@ -51,11 +51,11 @@ class PostManager extends Database
 
     }
 
-    public function addPost($title, $content)
+    public function addPost($title, $content, $img)
     {
         $db = $this->dbconnect();
-        $newPost = $db->prepare('INSERT INTO posts (title, content, creation_date) VALUES (?, ?, NOW())');
-        $affectedLines = $newPost->execute(array($title, $content));
+        $newPost = $db->prepare('INSERT INTO posts (title, content, creation_date, img) VALUES (?, ?, NOW(), ?)');
+        $affectedLines = $newPost->execute(array($title, $content, $img));
 
         return $affectedLines;
     }

@@ -17,6 +17,8 @@
 <a href="index.php?action=adminconnexion&adminview.php" class="btn btn-primary btn-md">Revenir à la page précédente
 
 </a>
+
+
 <div>
     <form action="index.php?action=addpost" method="post">
         <label for="title">Titre</label>
@@ -29,7 +31,12 @@
 </div>
 
 
+<h1>Uploader une image</h1>
+<form action="index.php?action=addpost" method="post" enctype="multipart/form-data">
+    <input type="file" name="fichier"><br />
+    <input type="submit" value="envoyer le fichier">
 
+</form>
 
 <?php $content = ob_get_clean(); ?>
 

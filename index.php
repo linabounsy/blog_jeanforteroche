@@ -55,7 +55,7 @@ try { // On essaie de faire des choses
             $connexionController->addNewPost();
         }
         if ($_GET['action'] == 'addpost') {
-            $connexionController->addPost($_POST['title'], $_POST['content']);
+            $connexionController->addPost($_POST['title'], $_POST['content'], $_POST['img']);
         }
         if ($_GET['action'] == 'modifypost') {
             $connexionController->modifyPost();
