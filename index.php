@@ -42,6 +42,12 @@ try { // On essaie de faire des choses
         if ($_GET['action'] == 'reportcomment') {
             $commentController->reportComment($_GET['id']);
         }
+        if ($_GET['action'] == 'unreportcomment') {
+            $commentController->unReportComment($_GET['id']);
+        }
+        if ($_GET['action'] == 'reportedcomments') {
+            $connexionController->displayReported();
+        }
         if ($_GET['action'] == 'delete') {
             $connexionController->deleteCommentAdmin();
         }
@@ -55,9 +61,9 @@ try { // On essaie de faire des choses
             $connexionController->modifyPost();
         }
         if ($_GET['action'] == 'editpost') {
-            $connexionController->editPost($_GET['id'], $_POST['title'], $_POST['content']);
+            $connexionController->editPost($_GET['id'], $_POST['title'], $_POST['content'], $_POST['name'], $_POST['file_url']);
         }
-
+   
 
 } else {
     $postController->listPosts();

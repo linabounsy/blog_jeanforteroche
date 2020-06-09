@@ -69,7 +69,7 @@
                         </div>
 
 
-                        <textarea class="form-control" id="quickReplyFormComment" placeholder="votre commentaire" rows="5"></textarea>
+                        <textarea class="form-control" id="quickReplyFormComment" placeholder="votre commentaire" name="comment" rows="5"></textarea>
 
                         <div class="text-center">
                             <button class="btn btn-info btn-sm" type="submit">Ajouter</button>

@@ -54,10 +54,19 @@ class FrontendAdmin
         $postManager = new PostManager;
         $commentManager = new CommentManager;
         $posts = $postManager->getPostsAdmin();
-        $comments = $commentManager->displayReported();
-        $allPosts = $postManager->getAllPosts();
+        $allPosts = $postManager->getAllPosts(); // recup tous les posts dans la barre nav
         
         require('view/adminView.php');
+    }
+
+    public function displayReported()
+    {
+        $postManager = new PostManager;
+        $commentManager = new CommentManager;
+        $allPosts = $postManager->getAllPosts();
+        $comments = $commentManager->displayReported();
+
+        require('view/displayReportedView.php');
     }
 
     public function deletePostAdmin()
@@ -97,6 +106,8 @@ class FrontendAdmin
 
     public function addNewPost() // renvoie vers la page de redaction de l'article
     {
+        $postManager = new PostManager;
+        $allPosts = $postManager->getAllPosts();
         require('view/newPostView.php');
     }
 
@@ -107,6 +118,7 @@ class FrontendAdmin
             if (!empty($_POST['title']) && !empty($_POST['content'])) {
                 $postManager = new PostManager;
                 $postManager->modifyPost($postId, $title, $content);
+            
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
                 
@@ -121,6 +133,7 @@ class FrontendAdmin
         if (isset($_GET['id']) && $_GET['id'] > 0) {
         $postManager = new PostManager;
         $post = $postManager->getPost($_GET['id']);
+    
         }
         else {
             // Autre exception
@@ -128,4 +141,7 @@ class FrontendAdmin
         }
         require('view/editPostView.php');
     }
+
+    
+
 }

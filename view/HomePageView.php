@@ -60,7 +60,7 @@
             <h4 class="card-title"><?= htmlspecialchars($post['title']) ?></h4>
             <!--Text-->
             <p class="card-text"><?= $post['content_cut'] ?></p>
-            <a href="index.php?action=post&id=<?= $post['id'] ?>" target="_blank"
+            <a href="index.php?action=post&id=<?= $post['id'] ?>"
               class="btn btn-primary btn-md">Lire Plus
               <i class="fas fa-play ml-2"></i>
             </a>

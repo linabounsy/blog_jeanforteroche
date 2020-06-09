@@ -4,8 +4,6 @@
 }
 
 
-
-
 footer
 {
     text-align: center;
@@ -19,5 +17,10 @@ footer
     text-align: center;
     margin-left: 25%;
 
+}
+
+.comments
+{
+    text-justify: auto;
 }
 

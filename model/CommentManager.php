@@ -44,10 +44,18 @@ class CommentManager extends Database
         
     }
 
-    public function displayReported() // recupère les commentaires qui ont été signalés + de 3 fois 
+    public function unReportComment($commentId) // repasse le nbre de signalements à 0
     {
         $db = $this->dbConnect();
-        $nbReport = $db->prepare('SELECT * FROM comments WHERE alert > 3');
+        $report = $db->prepare('UPDATE comments SET alert = 0 WHERE id = ?');
+        $report->execute(array($commentId));
+        
+    }
+
+    public function displayReported() // recupère les commentaires et les trie par ordre croissant 
+    {
+        $db = $this->dbConnect();
+        $nbReport = $db->prepare('SELECT * FROM comments WHERE alert > 0 ORDER BY alert DESC');
         $nbReport->execute(array());
         $reportComment = $nbReport->fetchAll();
 

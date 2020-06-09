@@ -49,6 +49,20 @@ class FrontendComment
     
     }
 
+    public function unReportComment($commentId)
+    {
+        if (isset($_GET['id']) && $_GET['id']> 0) {
+            $commentId = $_GET['id'];
+            $commentManager = new CommentManager;
+            $postId = $commentManager->getComment($commentId); // recupère le tableau avec le commentaire en question
+            $post = $postId['post_id']; // recupère l'id du post 
+            $commentManager->unReportComment($commentId);
+         
+        }
+        header('Location: index.php?action=adminconnexion');
+    
+    }
+
 }
       
 

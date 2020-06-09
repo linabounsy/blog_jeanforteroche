@@ -13,6 +13,12 @@
     });
 </script>
 
+<!--Main layout-->
+<main class="mt-5 pt-5">
+
+<a href="index.php?action=adminconnexion&adminview.php" class="btn btn-primary btn-md">Revenir à la page précédente
+
+      </a>
 <div>
     <form action="index.php?action=editpost&id=<?= $post['id'] ?>" method="post">
         <label for="title">Titre</label>
@@ -23,6 +29,14 @@
         <input type="submit" value="modifier" />
     </form>
 </div>
+
+
+<h1>Uploader une image</h1>
+<form action="index.php?action=uploadimg&id=<?= $post['id'] ?>" method="post" enctype="multipart/form-data">
+    <input type="file" name="fichier"><br />
+    <input type="submit" value="envoyer le fichier">
+
+</form>
 
 
 <?php $content = ob_get_clean(); ?>
