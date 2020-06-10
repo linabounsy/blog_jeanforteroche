@@ -28,7 +28,7 @@ try { // On essaie de faire des choses
             $commentController->addComment($_GET['id'], $_POST['author'], $_POST['comment']); //get  l'id et recupere en post l'auteur et le commentaire
         }
         if ($_GET['action'] == 'connexion') {
-            $connexionController->adminConnexion();
+            $connexionController->connexion();
         }
         if ($_GET['action'] == 'adminconnexion') {
             $connexionController->indexAdminView();
@@ -43,10 +43,10 @@ try { // On essaie de faire des choses
             $commentController->reportComment($_GET['id']);
         }
         if ($_GET['action'] == 'unreportcomment') {
-            $commentController->unReportComment($_GET['id']);
+            $commentController->confirmUnreportComment($_GET['id']);
         }
         if ($_GET['action'] == 'reportedcomments') {
-            $connexionController->displayReported();
+            $connexionController->showDisplayReported();
         }
         if ($_GET['action'] == 'delete') {
             $connexionController->deleteCommentAdmin();
@@ -54,8 +54,8 @@ try { // On essaie de faire des choses
         if ($_GET['action'] == 'addnewpost') {
             $connexionController->addNewPost();
         }
-        if ($_GET['action'] == 'addpost') {
-            $connexionController->addPost($_POST['title'], $_POST['content'], $_POST['img']);
+        if ($_GET['action'] == 'sendpost') {
+            $connexionController->sendPost();
         }
         if ($_GET['action'] == 'modifypost') {
             $connexionController->modifyPost();

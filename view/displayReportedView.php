@@ -27,8 +27,8 @@
                 <th scope="row"><?= htmlspecialchars($comment['alert']) ?></th>
                 <td><?= htmlspecialchars($comment['author']) ?></td>
                 <td><span class="comments"><?= nl2br(htmlspecialchars($comment['comment'])) ?></span></td>
-                <td><a href="index.php?action=unreportcomment&id=<?= $comment['id'] ?>" onclick="return window.confirm('Etes vous sûr de vouloir désignaler ce commentaire ?')" class="btn btn-primary btn-md">oui</td>
-                <td><a href="index.php?action=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')" class="btn btn-primary btn-md">oui</td>
+                <td><a href="index.php?action=unreportcomment&id=<?= $comment['id'] ?>" onclick="return window.confirm('Etes vous sûr de vouloir désignaler ce commentaire ?')" class="btn btn-success btn-sm">oui</td>
+                <td><a href="index.php?action=delete&id=<?= $comment['id'] ?>" onclick="return window.confirm('Etes vous sûr de vouloir supprimer ce commentaire ?')" class="btn btn-success btn-sm">oui</td>
               </tr>
 
             <?php } ?>

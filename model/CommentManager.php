@@ -44,7 +44,7 @@ class CommentManager extends Database
         
     }
 
-    public function unReportComment($commentId) // repasse le nbre de signalements à 0
+    public function unreportComment($commentId) // repasse le nbre de signalements à 0
     {
         $db = $this->dbConnect();
         $report = $db->prepare('UPDATE comments SET alert = 0 WHERE id = ?');
@@ -52,7 +52,7 @@ class CommentManager extends Database
         
     }
 
-    public function displayReported() // recupère les commentaires et les trie par ordre croissant 
+    public function displayReported() // recupère les commentaires signalés et les trie par ordre croissant 
     {
         $db = $this->dbConnect();
         $nbReport = $db->prepare('SELECT * FROM comments WHERE alert > 0 ORDER BY alert DESC');

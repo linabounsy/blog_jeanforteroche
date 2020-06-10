@@ -9,11 +9,12 @@
         <section id="post">
 
             <!--Featured Image-->
+            
             <div class="card mb-4 wow fadeIn">
+            
+            <img src="public/img/uploaded/<?=$post['img']?>" class="img-fluid" alt="">
 
-                <img src="assets/images/mbr-1920x1280.jpg" class="img-fluid" alt="">
-
-
+           
             </div>
             <!--/.Featured Image-->
 
@@ -48,7 +49,7 @@
                                 <h5 class="mt-0 font-weight-bold"><?= htmlspecialchars($comment['author']) ?> le <?= $comment['comment_date_fr'] ?>
                                 </h5>
                                 <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-                                <a href="index.php?action=reportcomment&id=<?= $comment['id'] ?>"><input type="button" value="signaler" onclick="return window.confirm('Votre signalement a bien été pris en compte')"></a>
+                                <a href="index.php?action=reportcomment&id=<?= $comment['id'] ?>"><input type="button" class="btn btn-sm btn-deep-orange" value="signaler" onclick="return window.confirm('Votre signalement a bien été pris en compte')"></a>
                             
                             </div>
                             <?php } ?>

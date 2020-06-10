@@ -19,24 +19,24 @@
 </a>
 
 
+
 <div>
-    <form action="index.php?action=addpost" method="post">
+    <form action="index.php?action=sendpost" method="post" enctype="multipart/form-data">
         <label for="title">Titre</label>
         <input type="text" id="title" name="title" />
+        
 
         <textarea id="mytextarea" name="content"></textarea>
-
-        <input type="submit">
+        <br />
+        <input type="file" name="img"><br />
+   
+        <br />
+        <input type="submit" class="btn btn-light">
     </form>
 </div>
 
 
-<h1>Uploader une image</h1>
-<form action="index.php?action=addpost" method="post" enctype="multipart/form-data">
-    <input type="file" name="fichier"><br />
-    <input type="submit" value="envoyer le fichier">
 
-</form>
 
 <?php $content = ob_get_clean(); ?>
 

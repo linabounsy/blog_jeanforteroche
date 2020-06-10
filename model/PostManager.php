@@ -10,7 +10,7 @@ class PostManager extends Database
     public function getAllPosts() // recupere TOUS les posts
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content FROM posts ORDER BY id DESC');;
+        $req = $db->query('SELECT id, title, content, img FROM posts ORDER BY id DESC');;
         $allPosts = $req->fetchAll();
         return $allPosts;
 
@@ -19,7 +19,7 @@ class PostManager extends Database
     public function getPosts() // recupere les derniers posts
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, IF(CHAR_LENGTH(content) > 100, CONCAT(LEFT(content,100), "..."), content) AS content_cut FROM posts ORDER BY id DESC LIMIT 0, 3');
+        $req = $db->query('SELECT id, title, img, IF(CHAR_LENGTH(content) > 100, CONCAT(LEFT(content,100), "..."), content) AS content_cut FROM posts ORDER BY id DESC LIMIT 0, 3');
         $posts = $req->fetchAll();
         return $posts;
 
@@ -28,7 +28,7 @@ class PostManager extends Database
     public function getPost($postId) // recupere un post grace à l'id
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content FROM posts WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, content, img FROM posts WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
         return $post;
@@ -37,7 +37,7 @@ class PostManager extends Database
     public function getPostsAdmin() // recupere les posts vue admin
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, IF(CHAR_LENGTH(content) > 100, CONCAT(LEFT(content,100), "..."), content) AS content_cut FROM posts ORDER BY id DESC');
+        $req = $db->query('SELECT id, title, img, IF(CHAR_LENGTH(content) > 100, CONCAT(LEFT(content,100), "..."), content) AS content_cut FROM posts ORDER BY id DESC');
         $posts = $req->fetchAll();
         return $posts;
 
@@ -56,6 +56,7 @@ class PostManager extends Database
         $db = $this->dbconnect();
         $newPost = $db->prepare('INSERT INTO posts (title, content, creation_date, img) VALUES (?, ?, NOW(), ?)');
         $affectedLines = $newPost->execute(array($title, $content, $img));
+
 
         return $affectedLines;
     }

@@ -7,15 +7,15 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Accueil</title>
     <!-- MDB icon -->
-    <link rel="icon" href="assets/images/mbr-162x122.jpg" alt="accueil">
+    <link rel="icon" href="public/img/mbr-162x122.jpg" alt="accueil">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Google Fonts Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="css/mdb.min.css">
+    <link rel="stylesheet" href="public/css/mdb.min.css">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="public/css/style.css">
 </head>
@@ -28,7 +28,7 @@
 
     <!-- Brand -->
     <a class="navbar-brand" href="index.php">
-                <img src="assets/images/mbr-162x122.jpg" height="30" alt="logo_accueil">
+                <img src="public/img/mbr-162x122.jpg" height="30" alt="logo_accueil">
                 <strong class="black-text">J.Forteroche</strong>
             </a>
  
@@ -133,15 +133,15 @@
     <!-- End your project here-->
 
     <!-- jQuery -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="public/js/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="public/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Your custom scripts (optional) -->
-    <script type="text/javascript"></script>
+    <script type="text/javascript" src="public/js/mdb.min.js"></script>
+
+
 
 </body>
 

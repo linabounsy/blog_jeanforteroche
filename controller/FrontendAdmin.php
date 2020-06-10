@@ -13,7 +13,7 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 class FrontendAdmin
 {
-    public function adminConnexion()
+    public function connexion()
     {
 
 
@@ -36,13 +36,15 @@ class FrontendAdmin
 
                 session_start();
                 $_SESSION['id'] = $user['id'];
-                $_SESSION['login'] = $user['login']; // pousser la super globale dans la view template pour la connexion + afficher login user une fois connecté
+                $_SESSION['login'] = $user['login'];
+                 // pousser la super globale dans la view template pour la connexion + afficher login user une fois connecté
                 header('Location: index.php?action=adminconnexion');
+                
                 exit();
             } else {
                 throw new Exception('Mauvais login ou mot de passe');
             }
-
+            
         }
         require('view/connexionView.php');
     }
@@ -59,7 +61,7 @@ class FrontendAdmin
         require('view/adminView.php');
     }
 
-    public function displayReported()
+    public function showDisplayReported()
     {
         $postManager = new PostManager;
         $commentManager = new CommentManager;
@@ -89,30 +91,47 @@ class FrontendAdmin
         header('Location: index.php');
     }
 
-    public function addPost($title, $content, $img)
+    public function sendPost()
     {
-        if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['img'])) {
-            $postManager = new PostManager;
-            $affectedLines = $postManager->addPost($title, $content, $img);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (!empty($_FILES) && !empty($_POST['title']) && !empty($_POST['content'])) {
+                $fileTemporyName = $_FILES['img'] ['tmp_name']; //nom du fichier temporaire
+                $fileName = $_FILES['img'] ['name']; // on veut le nom du fichier
+
+                $temp = explode(".", $fileName); // isoler le "." et le nom du fichier
+                $newName = round(microtime(true)) . '.' . end($temp); // renommer le fichier de manière aléatoire
+                $fileDest = 'img/uploaded/' .$fileName; // dossier final pour l'image
+                $fileExtension = strrchr($newName, "."); // isole le nouveau nom de l'image de l'extension
+                $extensionAllowed = array('.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG'); // extension autorisée
+
+                $maxSize = 2000000;
+                $size = ($_FILES['img']['size']);
+
+            } else {
+                throw new Exception('Tous les champs ne sont pas remplis');
+            }
+
+            if (in_array($fileExtension, $extensionAllowed) && $size < $maxSize && $size !== 0) { //separer l'extension et le format + max taille
+                $movePath = move_uploaded_file( $fileTemporyName, $fileDest); // deplacer dossier temporaire vers dossier final
+                if ($movePath) {
+                    $postManager = new PostManager;
+                    $affectedLines = $postManager->addPost($_POST['title'], $_POST['content'], $_FILES['img']['name']);
+
+                    header('Location: index.php?action=adminconnexion');
+                } else {
+                    throw new Exception('Image trop lourde ou format non conforme');
+                    
+                }
+            } else {
+                throw new Exception('vous n\'avez pas chargé d\'image');
+            }
+
+        
         } else {
             throw new Exception('Tous les champs ne sont pas remplis');
         }
-        if ($affectedLines === false) {
-            throw new Exception('Impossible d\'ajouter l\'article');
-        } else {
-            header('Location: index.php?action=adminconnexion');
-        }
-        if (!empty($_FILES)) {
-            $file_name = $_FILES['fichier'] ['name']; // on veut le nom du fichier
-            $file_tmp_name = $_FILES['fichier'] ['tmp_name']; // on veut avoir le type de fichier
-            $file_dest = 'files/' .$file_name;
-        }
+
         
-       if(move_uploaded_file($file_tmp_name, $file_dest)) { // prendre le fichier qui est dans le dossier temporaire et l'envoyer vers le dossier files
-        
-       } else {
-           echo 'une erreur est survenue';
-       }
     }
 
     public function addNewPost() // renvoie vers la page de redaction de l'article

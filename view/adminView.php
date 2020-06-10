@@ -3,7 +3,7 @@
 <!--Main layout-->
 <main class="mt-5 pt-5">
   <div class="container">
-    <section class="card wow fadeIn" style="background-image: url(assets/images/mbr-1920x1280.jpg);">
+    <section class="card wow fadeIn" style="background-image: url(public/img/mbr-1920x1280.jpg);">
 
       <!-- Content -->
       <div class="card-body text-white text-center py-5 px-5 my-5">
@@ -44,12 +44,14 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img src="assets/images/mbr-676x380.jpg" class="card-img-top" alt="">
+              
+              <img src="public/img/uploaded/<?=$post["img"]?>" class="card-img-top" alt="">
+               
                 <a href="#" target="_blank">
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
-
+             
               <!--Card content-->
               <div class="card-body">
                 <!--Title-->

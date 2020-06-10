@@ -8,7 +8,8 @@
 <script>
     tinymce.init({
         selector: '#mytextarea',
-        forced_root_block:""
+        forced_root_block:"",
+        entity_encoding : "raw"
 
     });
 </script>
@@ -26,17 +27,11 @@
 
         <textarea id="mytextarea" name="content"> <?= htmlspecialchars($post['content']) ?></textarea>
 
-        <input type="submit" value="modifier" />
+        <input type="submit" value="modifier" class="btn btn-light" />
     </form>
 </div>
 
 
-<h1>Uploader une image</h1>
-<form action="index.php?action=uploadimg&id=<?= $post['id'] ?>" method="post" enctype="multipart/form-data">
-    <input type="file" name="fichier"><br />
-    <input type="submit" value="envoyer le fichier">
-
-</form>
 
 
 <?php $content = ob_get_clean(); ?>
