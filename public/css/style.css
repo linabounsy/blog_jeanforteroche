@@ -24,3 +24,28 @@ footer
     text-justify: auto;
 }
 
+.card-img-top
+{
+    width:350px;
+    height: 240px;
+
+}
+
+#containimg
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.img-fluid
+{
+    width:1110px;
+    height: 380px;
+}
+#containerimgpost
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

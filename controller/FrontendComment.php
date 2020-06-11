@@ -13,12 +13,12 @@ require_once ('model/PostManager.php');
 class FrontendComment
 
 {
-    public function addComment($postId, $author, $comment)
+    public function addComment($postId) // ajouter un commentaire
     {
-        $commentManager = new CommentManager; 
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
+        $commentManager = new CommentManager; //on instancie la classe CommentManager
+        if (isset($_GET['id']) && $_GET['id'] > 0) { // on verifie qu'il y a un id '
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                $affectedLines = $commentManager->postComment($postId, $author, $comment);
+                $affectedLines = $commentManager->postComment($_GET['id'], $_POST['author'], $_POST['comment']); // on appelle la méthode postComment et ses paramètres
             }
             else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
@@ -34,7 +34,7 @@ class FrontendComment
         require ('view/postView.php');
     }
 
-    public function reportComment($commentId)
+    public function reportComment($commentId) // signaler un commentaire
     {
         if (isset($_GET['id']) && $_GET['id']> 0) {
             $commentId = $_GET['id'];

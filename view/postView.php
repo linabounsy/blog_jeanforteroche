@@ -10,7 +10,7 @@
 
             <!--Featured Image-->
             
-            <div class="card mb-4 wow fadeIn">
+            <div id="containerimgpost" class="card mb-4 wow fadeIn">
             
             <img src="public/img/uploaded/<?=$post['img']?>" class="img-fluid" alt="">
 

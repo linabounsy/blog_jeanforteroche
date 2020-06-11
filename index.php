@@ -25,7 +25,7 @@ try { // On essaie de faire des choses
             $postController->post(); // on appelle la methode post de la classe FrontendPost
         }
         if ($_GET['action'] == 'addComment') {
-            $commentController->addComment($_GET['id'], $_POST['author'], $_POST['comment']); //get  l'id et recupere en post l'auteur et le commentaire
+            $commentController->addComment($_GET['id']); //get  l'id et recupere en post l'auteur et le commentaire
         }
         if ($_GET['action'] == 'connexion') {
             $connexionController->connexion();
@@ -61,7 +61,7 @@ try { // On essaie de faire des choses
             $connexionController->modifyPost();
         }
         if ($_GET['action'] == 'editpost') {
-            $connexionController->editPost($_GET['id'], $_POST['title'], $_POST['content'], $_POST['name'], $_POST['file_url']);
+            $connexionController->editPost();
         }
    
 

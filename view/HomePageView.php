@@ -46,7 +46,7 @@
         <div class="card">
 
           <!--Card image-->
-          <div class="view overlay">
+          <div id="containimg" class="view overlay">
           <img src="public/img/uploaded/<?=$post["img"]?>" class="card-img-top"
               alt="">
             <a href="#" target="_blank">

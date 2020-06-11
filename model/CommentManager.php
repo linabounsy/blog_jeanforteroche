@@ -62,7 +62,7 @@ class CommentManager extends Database
         return $reportComment;
     }
 
-    public function deleteComment($commentId)
+    public function deleteComment($commentId) // supprime un commentaire
     {
         $db = $this->dbConnect();
         $delete = $db->prepare('DELETE FROM comments WHERE id = ?');
