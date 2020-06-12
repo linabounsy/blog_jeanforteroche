@@ -28,10 +28,10 @@ try { // On essaie de faire des choses
             $commentController->addComment($_GET['id']); //get  l'id et recupere en post l'auteur et le commentaire
         }
         if ($_GET['action'] == 'connexion') {
-            $connexionController->connexion();
+            $connexionController->adminConnexion();
         }
-        if ($_GET['action'] == 'adminconnexion') {
-            $connexionController->indexAdminView();
+        if ($_GET['action'] == 'indexadmin') {
+            $connexionController->indexAdmin();
         }
         if ($_GET['action'] == 'deconnexion') {
             $connexionController->deconnexion();

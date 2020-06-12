@@ -13,13 +13,13 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 class FrontendAdmin
 {
-    public function connexion()
+    public function adminConnexion()
     {
 
 
         $adminManager = new AdminManager;
         $postManager = new PostManager;
-        $allPosts = $postManager->getAllPosts();
+        
 
         if (isset($_POST['login']) && ($_POST['password'])) {
             $login = $_POST["login"];
@@ -27,6 +27,7 @@ class FrontendAdmin
 
             if (!empty($login) && !empty($password)) {
                 $user = $adminManager->adminConnexion($login);
+                
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
@@ -40,9 +41,11 @@ class FrontendAdmin
                     $_SESSION['id'] = $user['id'];
                     $_SESSION['login'] = $user['login'];
                     // pousser la super globale dans la view template pour la connexion + afficher login user une fois connecté
-                    header('Location: index.php?action=adminconnexion');
+                    header('Location: index.php?action=indexadmin');
 
                     exit();
+                    
+
                 } else {
                     throw new Exception('Mauvais login ou mot de passe');
                 }
@@ -50,7 +53,7 @@ class FrontendAdmin
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['login'] = $user['login'];
                 // pousser la super globale dans la view template pour la connexion + afficher login une fois connecté
-                header('Location: index.php?action=adminconnexion');
+                header('Location: index.php?action=indexadmin');
 
                 exit();
             } else {
@@ -61,7 +64,7 @@ class FrontendAdmin
         require('view/connexionView.php');
     }
 
-    public function indexAdminView()
+    public function indexAdmin()
     {
         // afficher les articles et les commentaires dans la view admin 
 
@@ -70,7 +73,7 @@ class FrontendAdmin
         $posts = $postManager->getPostsAdmin();
         $allPosts = $postManager->getAllPosts(); // recup tous les posts dans la barre nav
 
-        require('view/adminView.php');
+        require('view/indexAdmin.php');
     }
 
     public function showDisplayReported()
@@ -87,14 +90,14 @@ class FrontendAdmin
     {
         $postManager = new PostManager;
         $deletePost = $postManager->deletePost($_GET['id']);
-        header('Location: index.php?action=adminconnexion');
+        header('Location: index.php?action=indexadmin');
     }
 
     public function deleteCommentAdmin()
     {
         $commentManager = new CommentManager;
         $deleteComment = $commentManager->deleteComment($_GET['id']);
-        header('Location: index.php?action=adminconnexion');
+        header('Location: index.php?action=indexadmin');
     }
 
     public function deconnexion()
@@ -109,11 +112,9 @@ class FrontendAdmin
             if (!empty($_FILES) && !empty($_POST['title']) && !empty($_POST['content'])) {
                 $fileTemporyName = $_FILES['img']['tmp_name']; //nom du fichier temporaire
                 $fileName = $_FILES['img']['name']; // on veut le nom du fichier
-
-                $temp = explode(".", $fileName); // isoler le "." et le nom du fichier
-                $newName = round(microtime(true)) . '.' . end($temp); // renommer le fichier de manière aléatoire
-                $fileDest = 'img/uploaded/' . $fileName; // dossier final pour l'image
-                $fileExtension = strrchr($newName, "."); // isole le nouveau nom de l'image de l'extension
+                $finalName = uniqid() . $fileName;
+                $fileDest = 'public/img/uploaded/' . $finalName; // dossier final pour l'image
+                $fileExtension = strrchr($finalName, "."); // isole le nouveau nom de l'image de l'extension
                 $extensionAllowed = array('.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG'); // extension autorisée
                 $maxSize = 2000000;
                 $size = ($_FILES['img']['size']);
@@ -124,12 +125,14 @@ class FrontendAdmin
             }
 
             if (in_array($fileExtension, $extensionAllowed) && $size < $maxSize && $size !== 0) { //separer l'extension et le format + max taille
+                
                 $movePath = move_uploaded_file($fileTemporyName, $fileDest); // deplacer dossier temporaire vers dossier final
+                
                 if ($movePath) {
                     $postManager = new PostManager;
-                    $affectedLines = $postManager->addPost($_POST['title'], $_POST['content'], $_FILES['img']['name']);
+                    $affectedLines = $postManager->addPost($_POST['title'], $_POST['content'], $finalName);
 
-                    header('Location: index.php?action=adminconnexion');
+                    header('Location: index.php?action=indexadmin');
                 } else {
                     throw new Exception('Image trop lourde ou format non conforme');
                 }
@@ -152,22 +155,38 @@ class FrontendAdmin
     {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
 
+        
             if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                $postManager = new PostManager;
-                $postManager->modifyPost($_GET['id'], $_POST['title'], $_POST['content'], $_POST['name'], $_POST['file_url']);
-            } else {
-                throw new Exception('Tous les champs ne sont pas remplis !');
-            }
-        }
-        header('Location: index.php?action=adminconnexion');
-    }
 
+                $currentImgTemp = $_FILES['changeimg']['tmp_name'];
+                $currentImg = $_FILES['changeimg'] ['name'];
+                $newName = uniqid() . $currentImg;
+                $currentFile = 'public/img/uploaded/' . $newName;
+                
+                
+
+                if($currentImgTemp != "") {
+                    move_uploaded_file($currentImgTemp, $currentFile);
+                    $postManager = new PostManager;
+                    $newImg = $postManager->modifyPost($_GET['id'], $_POST['title'], $_POST['content'], $newName);
+
+                } else {
+                    $postManager = new PostManager;
+                    $affectedLines = $postManager->modifyPostWithoutImg($_GET['id'], $_POST['title'], $_POST['content']);
+                }
+
+            
+        } 
+        header('Location: index.php?action=indexadmin');
+        }
+    }
 
     public function modifyPost()
     {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $postManager = new PostManager;
             $post = $postManager->getPost($_GET['id']);
+            $allPosts = $postManager->getAllPosts();
         } else {
             // Autre exception
             throw new Exception('aucun identifiant d\'article envoyé');

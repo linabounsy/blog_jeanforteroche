@@ -17,16 +17,20 @@
 <!--Main layout-->
 <main class="mt-5 pt-5">
 
-<a href="index.php?action=adminconnexion&adminview.php" class="btn btn-primary btn-md">Revenir à la page précédente
+<a href="index.php?action=indexadmin&indexadmin.php" class="btn btn-primary btn-md">Revenir à la page précédente
 
       </a>
 <div>
-    <form action="index.php?action=editpost&id=<?= $post['id'] ?>" method="post">
+
+    <form action="index.php?action=editpost&id=<?= $post['id'] ?>" method="post" enctype="multipart/form-data">
         <label for="title">Titre</label>
         <input type="text" id="title" name="title" value="<?= htmlspecialchars($post['title']) ?>" />
 
         <textarea id="mytextarea" name="content"> <?= htmlspecialchars($post['content']) ?></textarea>
-
+        <input type="file" class="input-button" name="changeimg"><br />
+   
+   <br />
+ 
         <input type="submit" value="modifier" class="btn btn-light" />
     </form>
 </div>

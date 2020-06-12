@@ -10,7 +10,7 @@ class PostManager extends Database
     public function getAllPosts() // recupere TOUS les posts
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, img FROM posts ORDER BY id DESC');;
+        $req = $db->query('SELECT id, title, content, img FROM posts ORDER BY id DESC'); 
         $allPosts = $req->fetchAll();
         return $allPosts;
 
@@ -51,7 +51,7 @@ class PostManager extends Database
 
     }
 
-    public function addPost($title, $content, $img)
+    public function addPost($title, $content, $img) // ajouter un post
     {
         $db = $this->dbconnect();
         $newPost = $db->prepare('INSERT INTO posts (title, content, creation_date, img) VALUES (?, ?, NOW(), ?)');
@@ -61,13 +61,23 @@ class PostManager extends Database
         return $affectedLines;
     }
 
-    public function modifyPost($postId, $title, $content)
+    public function modifyPost($postId, $title, $content, $img)
+
+    {
+        $db = $this->dbconnect();
+        $editPost = $db->prepare("UPDATE posts SET title = :title, content = :content, img = :img WHERE id = :postId");
+        $editPost->execute(array('postId' =>$postId, 'title'=>$title, 'content'=>$content, 'img'=>$img));
+    }
+
+    public function modifyPostWithoutImg($postId, $title, $content)
 
     {
         $db = $this->dbconnect();
         $editPost = $db->prepare("UPDATE posts SET title = :title, content = :content WHERE id = :postId");
         $editPost->execute(array('postId' =>$postId, 'title'=>$title, 'content'=>$content));
     }
+
+    //faire une fonction pour delete image
   
 
 }   

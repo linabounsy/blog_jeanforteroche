@@ -49,7 +49,7 @@ class FrontendComment
     
     }
 
-    public function confirmUnreportComment($commentId)
+    public function confirmUnreportComment($commentId) // confirmation designalement d'un commentaire
     {
         if (isset($_GET['id']) && $_GET['id']> 0) {
             $commentId = $_GET['id'];
@@ -59,7 +59,7 @@ class FrontendComment
             $commentManager->unreportComment($commentId);
          
         }
-        header('Location: index.php?action=adminconnexion');
+        header('Location: index.php?action=indexadmin');
     
     }
 

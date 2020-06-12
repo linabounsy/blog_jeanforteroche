@@ -76,7 +76,7 @@
                     ?>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-black" href="index.php?action=adminconnexion&adminview.php"><?= $_SESSION['login'] ?></a>
+                        <a class="nav-link text-black" href="index.php?action=indexadmin&indexadmin.php"><?= $_SESSION['login'] ?></a>
                    
                     </li>
 

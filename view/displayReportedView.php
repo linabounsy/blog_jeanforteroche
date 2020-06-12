@@ -3,7 +3,7 @@
 <!--Main layout-->
 <main class="mt-5 pt-5">
 
-<a href="index.php?action=adminconnexion&adminview.php" class="btn btn-primary btn-md">Revenir à la page précédente
+<a href="index.php?action=indexadmin&indexadmin.php" class="btn btn-primary btn-md">Revenir à la page précédente
 
       </a>
 <table class="table table-hover table-bordered">
