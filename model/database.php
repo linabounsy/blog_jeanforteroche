@@ -6,7 +6,7 @@ class Database
 {
     protected function dbconnect()
     {
-        $db = new \PDO('mysql:host=localhost;dbname=jean_forteroche;charset=utf8', 'root', 'blogcomm@php', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
+        $db = new \PDO('mysql:host=db5000544427.hosting-data.io;dbname=dbs522674;charset=utf8', 'dbu514291', 'Je@nforteroche2020', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
             return $db;
     }
 }

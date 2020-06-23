@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Accueil</title>
+    <title><?php echo $pageTitle ?></title>
+
     <!-- MDB icon -->
     <link rel="icon" href="public/img/mbr-162x122.jpg" alt="accueil">
     <!-- Font Awesome -->
@@ -22,6 +23,7 @@
 
 <body>
 
+
 <!-- Navbar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
   <div class="container">
@@ -32,7 +34,7 @@
                 <strong class="black-text">J.Forteroche</strong>
             </a>
  
-      
+     
 
 
     <!-- Collapse -->
@@ -114,7 +116,9 @@
 <!-- Navbar -->
 
 
-    <div id="content"><?= $content ?></div>
+  <!--Main layout-->
+<main class="mt-5 pt-5">
+    <div id="content"><?= $content ?></div> </main>
 
 
     

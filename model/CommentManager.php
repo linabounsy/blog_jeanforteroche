@@ -2,9 +2,9 @@
 
 namespace Model;
 
-require_once ('model/Database.php');
+require_once('model/database.php');
 
-class CommentManager extends Database
+class CommentManager extends database
 {
     public function getComments($postId) // fonction recupere les commentaires d'un post
     {

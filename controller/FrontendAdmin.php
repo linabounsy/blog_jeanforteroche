@@ -19,7 +19,7 @@ class FrontendAdmin
 
         $adminManager = new AdminManager;
         $postManager = new PostManager;
-        
+        $allPosts = $postManager->getAllPosts();
 
         if (isset($_POST['login']) && ($_POST['password'])) {
             $login = $_POST["login"];
@@ -27,7 +27,6 @@ class FrontendAdmin
 
             if (!empty($login) && !empty($password)) {
                 $user = $adminManager->adminConnexion($login);
-                
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
@@ -44,15 +43,12 @@ class FrontendAdmin
                     header('Location: index.php?action=indexadmin');
 
                     exit();
-                    
-
                 } else {
                     throw new Exception('Mauvais login ou mot de passe');
                 }
 
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['login'] = $user['login'];
-                // pousser la super globale dans la view template pour la connexion + afficher login une fois connecté
                 header('Location: index.php?action=indexadmin');
 
                 exit();
@@ -60,7 +56,7 @@ class FrontendAdmin
                 throw new Exception('Mauvais login ou mot de passe');
             }
         }
-
+        $pageTitle ="Page connexion";
         require('view/connexionView.php');
     }
 
@@ -72,6 +68,7 @@ class FrontendAdmin
         $commentManager = new CommentManager;
         $posts = $postManager->getPostsAdmin();
         $allPosts = $postManager->getAllPosts(); // recup tous les posts dans la barre nav
+        $pageTitle ="Admin";
 
         require('view/indexAdmin.php');
     }
@@ -82,7 +79,7 @@ class FrontendAdmin
         $commentManager = new CommentManager;
         $allPosts = $postManager->getAllPosts();
         $comments = $commentManager->displayReported();
-
+        $pageTitle ="Commentaires signalés";
         require('view/displayReportedView.php');
     }
 
@@ -108,6 +105,7 @@ class FrontendAdmin
 
     public function sendPost()
     {
+        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!empty($_FILES) && !empty($_POST['title']) && !empty($_POST['content'])) {
                 $fileTemporyName = $_FILES['img']['tmp_name']; //nom du fichier temporaire
@@ -118,16 +116,14 @@ class FrontendAdmin
                 $extensionAllowed = array('.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG'); // extension autorisée
                 $maxSize = 2000000;
                 $size = ($_FILES['img']['size']);
-                
-
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
 
             if (in_array($fileExtension, $extensionAllowed) && $size < $maxSize && $size !== 0) { //separer l'extension et le format + max taille
-                
+
                 $movePath = move_uploaded_file($fileTemporyName, $fileDest); // deplacer dossier temporaire vers dossier final
-                
+
                 if ($movePath) {
                     $postManager = new PostManager;
                     $affectedLines = $postManager->addPost($_POST['title'], $_POST['content'], $finalName);
@@ -148,36 +144,20 @@ class FrontendAdmin
     {
         $postManager = new PostManager;
         $allPosts = $postManager->getAllPosts();
+        $pageTitle ="Ajouter un article";
         require('view/newPostView.php');
     }
 
-    public function editPost()
+    
+
+    public function deleteImg($postId)
     {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-
-        
-            if (!empty($_POST['title']) && !empty($_POST['content'])) {
-
-                $currentImgTemp = $_FILES['changeimg']['tmp_name'];
-                $currentImg = $_FILES['changeimg'] ['name'];
-                $newName = uniqid() . $currentImg;
-                $currentFile = 'public/img/uploaded/' . $newName;
-                
-                
-
-                if($currentImgTemp != "") {
-                    move_uploaded_file($currentImgTemp, $currentFile);
-                    $postManager = new PostManager;
-                    $newImg = $postManager->modifyPost($_GET['id'], $_POST['title'], $_POST['content'], $newName);
-
-                } else {
-                    $postManager = new PostManager;
-                    $affectedLines = $postManager->modifyPostWithoutImg($_GET['id'], $_POST['title'], $_POST['content']);
-                }
-
-            
-        } 
-        header('Location: index.php?action=indexadmin');
+        $postManager = new PostManager;
+        $post = $postManager->getPost($_GET['id']);
+        if (!unlink("public/img/uploaded/" . $post["img"])) {
+            echo 'error';
+        } else {
+            header('Location: index.php?action=modifypost&id=' . $postId);
         }
     }
 
@@ -191,6 +171,33 @@ class FrontendAdmin
             // Autre exception
             throw new Exception('aucun identifiant d\'article envoyé');
         }
+        $pageTitle ="Modifier un article";
         require('view/editPostView.php');
+    }
+
+    public function editPost()
+    {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+
+            if (!empty($_POST['title']) && !empty($_POST['content'])) {
+
+                $currentImgTemp = $_FILES['changeimg']['tmp_name'];
+                $currentImg = $_FILES['changeimg']['name'];
+                $newName = uniqid() . $currentImg;
+                $currentFile = 'public/img/uploaded/' . $newName;
+
+
+                if ($currentImgTemp != "") { // modifier une image d'un post existant
+                    move_uploaded_file($currentImgTemp, $currentFile);
+                    $postManager = new PostManager;
+                    $newImg = $postManager->modifyPost($_GET['id'], $_POST['title'], $_POST['content'], $newName);
+                } else {
+                    $postManager = new PostManager;
+                    $postManager->modifyPostWithoutImg($_GET['id'], $_POST['title'], $_POST['content']);
+                }
+            }
+            header('Location: index.php?action=indexadmin');
+        }
     }
 }

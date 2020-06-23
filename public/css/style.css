@@ -65,6 +65,16 @@ footer
   
 }
 
-.input-button:hover::before {
-    border-color: black;
-  }
+.input-button-form
+{
+  border: 5px #f9f9f9 solid;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border-radius: 3px;
+}
+
+ #form
+ {
+     display: flex;
+     flex-direction: column;
+ }
+ 

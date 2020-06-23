@@ -1,6 +1,5 @@
 <?php ob_start(); ?>
 
-<main class="mt-5 pt-5">
 
 <section id="connexion">
 

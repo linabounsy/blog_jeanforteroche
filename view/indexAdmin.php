@@ -1,7 +1,6 @@
 <?php ob_start(); ?>
 
-<!--Main layout-->
-<main class="mt-5 pt-5">
+
   <div class="container">
     <section class="card wow fadeIn" style="background-image: url(public/img/mbr-1920x1280.jpg);">
 

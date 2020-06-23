@@ -1,11 +1,11 @@
-<?php ob_start(); ?>
+<?php ob_start(); 
+$pageTitle; ?>
 
 
 
 <!--Main Navigation-->
 
-<!--Main layout-->
-<main class="mt-5 pt-5">
+
 <div class="container">
 
   <!--Section: Jumbotron-->
@@ -63,6 +63,7 @@
             <a href="index.php?action=post&id=<?= $post['id'] ?>"
               class="btn btn-primary btn-md">Lire Plus
               <i class="fas fa-play ml-2"></i>
+             
             </a>
           </div>
 
@@ -81,5 +82,5 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php
-require ('view/templateFront.php');
+require('view/templateFront.php');
 ?>

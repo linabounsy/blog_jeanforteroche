@@ -2,9 +2,9 @@
 
 namespace Model;
 
-require_once ('model/Database.php');
+require_once('model/database.php');
 
-class PostManager extends Database
+class PostManager extends database
 
 {
     public function getAllPosts() // recupere TOUS les posts
@@ -77,7 +77,6 @@ class PostManager extends Database
         $editPost->execute(array('postId' =>$postId, 'title'=>$title, 'content'=>$content));
     }
 
-    //faire une fonction pour delete image
-  
+
 
 }   

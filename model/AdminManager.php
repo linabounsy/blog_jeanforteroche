@@ -2,9 +2,9 @@
 
 namespace Model;
 
-require_once ('model/Database.php');
+require_once('model/database.php');
 
-class AdminManager extends Database
+class AdminManager extends database
 {
     public function adminConnexion($login) // se connecter à la base
     {

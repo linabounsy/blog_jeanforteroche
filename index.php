@@ -8,9 +8,9 @@ use Controller\FrontendComment;
 use Controller\FrontendPost;
 use Controller\FrontendAdmin;
 
-require ('controller/FrontendPost.php');
-require ('controller/FrontendComment.php');
-require ('controller/FrontendAdmin.php');
+require('controller/FrontendPost.php');
+require('controller/FrontendComment.php');
+require('controller/FrontendAdmin.php');
 
 $postController = new FrontendPost(); // instancier l'objet de la classe FrontendPost
 $commentController = new FrontendComment();
@@ -30,7 +30,7 @@ try { // On essaie de faire des choses
         if ($_GET['action'] == 'connexion') {
             $connexionController->adminConnexion();
         }
-        if ($_GET['action'] == 'indexadmin') {
+        if ($_GET['action'] == 'indexadmin' && $_SESSION) {
             $connexionController->indexAdmin();
         }
         if ($_GET['action'] == 'deconnexion') {
@@ -62,6 +62,9 @@ try { // On essaie de faire des choses
         }
         if ($_GET['action'] == 'editpost') {
             $connexionController->editPost();
+        }
+        if ($_GET['action'] == 'deleteimg') {
+            $connexionController->deleteImg($_GET['id']);
         }
    
 

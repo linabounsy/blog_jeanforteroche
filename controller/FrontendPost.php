@@ -18,7 +18,8 @@ class FrontendPost
         $postManager = new PostManager(); // Création d'un objet
         $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
         $allPosts = $postManager->getAllPosts();
-    
+        $pageTitle = "accueil";
+
         require ('view/HomePageView.php');
        
     }
@@ -35,8 +36,9 @@ class FrontendPost
         else {
             throw new \Exception('Aucun identifiant de billet envoyé');
         }
+        $pageTitle = "$post[title]";
 
-        require ('view/postView.php');
+        require('view/postView.php');
    
     }
 

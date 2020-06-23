@@ -7,8 +7,8 @@ use Model\CommentManager;
 use Model\PostManager;
 
 
-require_once ('model/CommentManager.php');
-require_once ('model/PostManager.php');
+require_once('model/CommentManager.php');
+require_once('model/PostManager.php');
 
 class FrontendComment
 
@@ -28,6 +28,7 @@ class FrontendComment
             }
             else {
                 header('Location: index.php?action=post&id=' . $postId);
+             
             }
                 
         }
