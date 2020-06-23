@@ -1,5 +1,4 @@
-<?php ob_start(); 
-$pageTitle; ?>
+<?php ob_start(); ?>
 
 
 
@@ -38,46 +37,44 @@ $pageTitle; ?>
     <div class="row mb-4 wow fadeIn">
 
       <?php foreach ($posts as $post) { ?>
- 
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-      
-        <!--Card-->
-        <div class="card">
 
-          <!--Card image-->
-          <div id="containimg" class="view overlay">
-          <img src="public/img/uploaded/<?=$post["img"]?>" class="card-img-top"
-              alt="">
-            <a href="#" target="_blank">
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!--Card image-->
+            <div class="view overlay">
+              <img src="public/img/uploaded/<?= $post["img"] ?>" class="card-img-top" alt="">
+
               <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
 
-          <!--Card content-->
-          <div class="card-body">
-            <!--Title-->
-            <h4 class="card-title"><?= htmlspecialchars($post['title']) ?></h4>
-            <!--Text-->
-            <p class="card-text"><?= $post['content_cut'] ?></p>
-            <a href="index.php?action=post&id=<?= $post['id'] ?>"
-              class="btn btn-primary btn-md">Lire Plus
-              <i class="fas fa-play ml-2"></i>
-             
-            </a>
-          </div>
+            </div>
 
+            <!--Card content-->
+            <div class="card-body">
+              <!--Title-->
+              <h4 class="card-title"><?= htmlspecialchars($post['title']) ?></h4>
+              <!--Text-->
+              <p class="card-text"><?= $post['content_cut'] ?></p>
+              <a href="index.php?action=post&id=<?= $post['id'] ?>" class="btn btn-primary btn-md">Lire Plus
+                <i class="fas fa-play ml-2"></i>
+
+              </a>
+            </div>
+
+          </div>
+          <!--/.Card-->
         </div>
-        <!--/.Card-->
-    </div>
-    <?php 
+      <?php
       }
       ?>
-      </div>
-      <!--Grid column-->
-
+    </div>
+    <!--Grid column-->
+  </section>
 </div>
-    </section>
+
 
 <?php $content = ob_get_clean(); ?>
 

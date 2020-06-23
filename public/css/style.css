@@ -31,11 +31,7 @@ footer
 
 }
 
-#containimg
-{
-    width: 100%;
-    object-fit: contain;
-}
+
 
 .img-fluid
 {
@@ -78,3 +74,12 @@ footer
      flex-direction: column;
  }
  
+ .report
+ {
+     border-radius : 5px;
+     background : #FFC433;
+     color: #ffffff;
+     text-decoration: none;
+     padding: 5px;
+ 
+ }

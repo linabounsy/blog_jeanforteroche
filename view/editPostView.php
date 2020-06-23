@@ -8,8 +8,8 @@
 <script>
     tinymce.init({
         selector: '#mytextarea',
-        forced_root_block:"",
-        entity_encoding : "raw"
+        forced_root_block: "",
+        entity_encoding: "raw"
 
     });
 </script>
@@ -17,7 +17,7 @@
 
 <div><a href="index.php?action=indexadmin&indexadmin.php" class="btn btn-primary btn-md">Revenir à la page précédente
 
-      </a>
+    </a>
 </div>
 <div id="form">
 
@@ -26,27 +26,27 @@
         <input type="text" id="title" name="title" value="<?= htmlspecialchars($post['title']) ?>" />
 
         <textarea id="mytextarea" name="content"> <?= htmlspecialchars($post['content']) ?></textarea>
-       
-       
-   <br />
 
 
-      
-      
+        <br />
+
+
+
+
     </form>
 </div>
 
 <div id="form_delete">
-<form action="index.php?action=deleteimg&id=<?= $post['id'] ?>" method="post" id="deleteimg"></form>
-</div>  
+    <form action="index.php?action=deleteimg&id=<?= $post['id'] ?>" method="post" id="deleteimg"></form>
+</div>
 
 
 <div>
-<input form="modifypost" type="file" class="input-button" name="changeimg">
-<input form="deleteimg" type="submit" value="supprimer l'image" class="input-button-form" onclick="return window.confirm('Etes vous sûr de vouloir supprimer cette image ?')">
-<br />
-<img src="public/img/uploaded/<?=$post["img"]?>" class="card-img-top" alt=""><br />
-<input form="modifypost" type="submit" class="input-button-form" />
+    <input form="modifypost" type="file" class="input-button" name="changeimg">
+    <input form="deleteimg" type="submit" value="supprimer l'image" class="input-button-form" onclick="return window.confirm('Etes vous sûr de vouloir supprimer cette image ?')">
+    <br />
+    <img src="public/img/uploaded/<?= $post["img"] ?>" class="card-img-top" alt=""><br />
+    <input form="modifypost" type="submit" class="input-button-form" />
 </div>
 
 

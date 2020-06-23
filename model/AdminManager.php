@@ -12,10 +12,7 @@ class AdminManager extends database
         $connexion = $db->prepare('SELECT * FROM user WHERE login = ?');
         $connexion->execute(array($login));
         $user = $connexion->fetch();
-    
-        return $user;
-        
-    }
 
-  
+        return $user;
+    }
 }

@@ -12,7 +12,7 @@ class CommentManager extends database
         $req = $db->prepare('SELECT *, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
         $req->execute(array($postId));
         $comments = $req->fetchAll();
-        
+
         return $comments;
     }
 
@@ -30,9 +30,9 @@ class CommentManager extends database
     {
         $db = $this->dbConnect();
         $newComment = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date, alert) VALUES (?, ?, ?, NOW(), "0")');
-        
+
         $affectedLines = $newComment->execute(array($postId, $author, $comment));
-        
+
         return $affectedLines;
     }
 
@@ -41,7 +41,6 @@ class CommentManager extends database
         $db = $this->dbConnect();
         $report = $db->prepare('UPDATE comments SET alert = alert+1 WHERE id = ?');
         $report->execute(array($commentId));
-        
     }
 
     public function unreportComment($commentId) // repasse le nbre de signalements à 0
@@ -49,7 +48,6 @@ class CommentManager extends database
         $db = $this->dbConnect();
         $report = $db->prepare('UPDATE comments SET alert = 0 WHERE id = ?');
         $report->execute(array($commentId));
-        
     }
 
     public function displayReported() // recupère les commentaires signalés et les trie par ordre croissant 
@@ -68,5 +66,4 @@ class CommentManager extends database
         $delete = $db->prepare('DELETE FROM comments WHERE id = ?');
         $delete->execute(array($commentId));
     }
-
 }

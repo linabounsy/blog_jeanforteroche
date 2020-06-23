@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -66,11 +66,9 @@ try { // On essaie de faire des choses
         if ($_GET['action'] == 'deleteimg') {
             $connexionController->deleteImg($_GET['id']);
         }
-   
-
-} else {
-    $postController->listPosts();
-}
+    } else {
+        $postController->listPosts();
+    }
 } catch (Exception $e) { // S'il y a eu une erreur, alors...
     echo 'Erreur : ' . $e->getMessage();
 }

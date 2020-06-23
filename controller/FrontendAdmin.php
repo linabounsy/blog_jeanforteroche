@@ -56,7 +56,7 @@ class FrontendAdmin
                 throw new Exception('Mauvais login ou mot de passe');
             }
         }
-        $pageTitle ="Page connexion";
+        $pageTitle = "Page connexion";
         require('view/connexionView.php');
     }
 
@@ -68,7 +68,7 @@ class FrontendAdmin
         $commentManager = new CommentManager;
         $posts = $postManager->getPostsAdmin();
         $allPosts = $postManager->getAllPosts(); // recup tous les posts dans la barre nav
-        $pageTitle ="Admin";
+        $pageTitle = "Admin";
 
         require('view/indexAdmin.php');
     }
@@ -79,7 +79,7 @@ class FrontendAdmin
         $commentManager = new CommentManager;
         $allPosts = $postManager->getAllPosts();
         $comments = $commentManager->displayReported();
-        $pageTitle ="Commentaires signalés";
+        $pageTitle = "Commentaires signalés";
         require('view/displayReportedView.php');
     }
 
@@ -105,7 +105,7 @@ class FrontendAdmin
 
     public function sendPost()
     {
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!empty($_FILES) && !empty($_POST['title']) && !empty($_POST['content'])) {
                 $fileTemporyName = $_FILES['img']['tmp_name']; //nom du fichier temporaire
@@ -144,11 +144,11 @@ class FrontendAdmin
     {
         $postManager = new PostManager;
         $allPosts = $postManager->getAllPosts();
-        $pageTitle ="Ajouter un article";
+        $pageTitle = "Ajouter un article";
         require('view/newPostView.php');
     }
 
-    
+
 
     public function deleteImg($postId)
     {
@@ -171,7 +171,7 @@ class FrontendAdmin
             // Autre exception
             throw new Exception('aucun identifiant d\'article envoyé');
         }
-        $pageTitle ="Modifier un article";
+        $pageTitle = "Modifier un article";
         require('view/editPostView.php');
     }
 

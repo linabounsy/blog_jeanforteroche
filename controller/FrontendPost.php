@@ -5,10 +5,10 @@ namespace Controller;
 use Model\PostManager;
 use Model\CommentManager;
 
-require_once ('model/PostManager.php');
-require_once ('model/CommentManager.php');
+require_once('model/PostManager.php');
+require_once('model/CommentManager.php');
 
-class FrontendPost 
+class FrontendPost
 
 {
 
@@ -20,8 +20,7 @@ class FrontendPost
         $allPosts = $postManager->getAllPosts();
         $pageTitle = "accueil";
 
-        require ('view/HomePageView.php');
-       
+        require('view/HomePageView.php');
     }
 
     public function post()
@@ -32,17 +31,11 @@ class FrontendPost
             $post = $postManager->getPost($_GET['id']);
             $comments = $commentManager->getComments($_GET['id']);
             $allPosts = $postManager->getAllPosts();
-        }
-        else {
+        } else {
             throw new \Exception('Aucun identifiant de billet envoyé');
         }
         $pageTitle = "$post[title]";
 
         require('view/postView.php');
-   
     }
-
-    
-    
-
 }
