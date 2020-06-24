@@ -72,4 +72,11 @@ class PostManager extends database
         $editPost = $db->prepare("UPDATE posts SET title = :title, content = :content WHERE id = :postId");
         $editPost->execute(array('postId' => $postId, 'title' => $title, 'content' => $content));
     }
+
+    public function deleteImg($postId)
+    {
+        $db = $this->dbconnect();
+        $editPost = $db->prepare("UPDATE posts SET img = NULL WHERE id = :postId");
+        $editPost->execute(array('postId' => $postId));
+    }
 }

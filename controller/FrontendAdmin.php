@@ -158,6 +158,7 @@ class FrontendAdmin
         if (!unlink("public/img/uploaded/" . $post["img"])) {
             echo 'error';
         } else {
+            $postManager->deleteImg($_GET['id']);
             header('Location: index.php?action=modifypost&id=' . $postId);
         }
     }
