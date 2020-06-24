@@ -3,7 +3,7 @@
 
 
 <div class="container">
-    <section>
+    <section id="post">
 
         <!--Featured Image-->
 
