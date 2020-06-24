@@ -45,7 +45,7 @@
     <input form="modifypost" type="file" class="input-button" name="changeimg">
     <input form="deleteimg" type="submit" value="supprimer l'image" class="input-button-form" onclick="return window.confirm('Etes vous sûr de vouloir supprimer cette image ?')">
     <br />
-    <img src="public/img/uploaded/<?= $post["img"] ?>" class="card-img-top" alt=""><br />
+    <img src="public/img/uploaded/<?= $post["img"] ?>" id="editpostimg" class="card-img-top" alt=""><br />
     <input form="modifypost" type="submit" class="input-button-form" />
 </div>
 

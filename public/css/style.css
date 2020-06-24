@@ -26,12 +26,9 @@ footer
 
 .card-img-top
 {
-    width:350px;
     height: 240px;
 
 }
-
-
 
 .img-fluid
 {
@@ -82,4 +79,9 @@ footer
      text-decoration: none;
      padding: 5px;
  
+ }
+
+ #editpostimg
+ {
+     width: 350px;
  }

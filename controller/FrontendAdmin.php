@@ -23,6 +23,7 @@ class FrontendAdmin
 
         if (isset($_POST['login']) && ($_POST['password'])) {
             $login = $_POST["login"];
+
             $password = $_POST["password"];
 
             if (!empty($login) && !empty($password)) {
