@@ -42,13 +42,13 @@
           <div class="card">
 
             <!--Card image-->
-            <div lass="view overlay">
+            <div class="view overlay">
 
               <img src="public/img/uploaded/<?= $post["img"] ?>" class="card-img-top" alt="">
 
 
               <div class="mask rgba-white-slight"></div>
-              </a>
+
             </div>
 
             <!--Card content-->

@@ -33,6 +33,9 @@ try { // On essaie de faire des choses
         if ($_GET['action'] == 'indexadmin' && $_SESSION) {
             $connexionController->indexAdmin();
         }
+        if ($_GET['action'] == 'indexadmin' && $_SESSION['id'] == 0) {
+            $postController->listPosts();
+        }
         if ($_GET['action'] == 'deconnexion') {
             $connexionController->deconnexion();
         }

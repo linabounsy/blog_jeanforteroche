@@ -31,9 +31,9 @@ class FrontendPost
             $post = $postManager->getPost($_GET['id']);
             $comments = $commentManager->getComments($_GET['id']);
             $allPosts = $postManager->getAllPosts();
-            if(empty($post)) {
+            if (empty($post)) {
                 throw new \Exception('Aucun identifiant de billet envoyé');
-            } 
+            }
         } else {
             throw new \Exception('Aucun identifiant de billet envoyé');
         }

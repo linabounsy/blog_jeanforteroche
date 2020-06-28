@@ -15,8 +15,6 @@ class FrontendAdmin
 {
     public function adminConnexion()
     {
-
-
         $adminManager = new AdminManager;
         $postManager = new PostManager;
         $allPosts = $postManager->getAllPosts();
@@ -62,6 +60,7 @@ class FrontendAdmin
     }
 
     public function indexAdmin()
+
     {
         // afficher les articles et les commentaires dans la view admin 
 

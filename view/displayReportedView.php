@@ -15,7 +15,7 @@
       <th scope="col">Nbre signalements</th>
       <th scope="col">Auteur</th>
       <th scope="col">Commentaire</th>
-  
+
       <th scope="col">Désignaler</th>
       <th scope="col">Supprimer</th>
     </tr>
